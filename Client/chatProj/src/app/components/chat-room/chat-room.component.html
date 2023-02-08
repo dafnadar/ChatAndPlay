@@ -1,0 +1,44 @@
+<div class="chat">
+  <div class="chat-header clearfix">
+    <div class="row">
+      <div class="col-lg-6">
+        <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+          <img
+            src="https://png.pngtree.com/png-vector/20220608/ourmid/pngtree-man-avatar-isolated-on-white-background-png-image_4891418.png"
+            alt="avatar">
+        </a>
+        <div class="chat-about">
+          <h6 class="m-b-0">{{user2.username}}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-history">
+    <ul class="m-b-0">
+      <li class="clearfix" *ngFor="let msg of messageList">
+        <div class="message-data">
+          <span class="message-data-time">{{msg.time | date : 'hh:mm'}}</span>
+          <span class="message-data-time">{{msg.sender}}</span>
+        </div>
+        <div [ngClass]="(msg.sender === user1.username) ? 'message my-message' : 'message other-message float-right' ">
+          {{msg.textMsg}}
+        </div>
+      </li>
+
+      <li class="bg-white mb-3">
+        <div class="form-outline">
+          <textarea class="form-control" id="textAreaExample2" rows="4" [(ngModel)]="txtMsg"></textarea>
+          <label class="form-label" for="textAreaExample2">Message</label>
+        </div>
+      </li>
+
+      <button type="button" class="btn btn-info btn-rounded float-end m-3" (click)="SendMessage(txtMsg)">Send</button>
+      
+
+
+
+
+    </ul>
+  </div>
+</div>

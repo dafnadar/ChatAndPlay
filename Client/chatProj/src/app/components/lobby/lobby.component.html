@@ -1,0 +1,41 @@
+<div class="d justify-content-start m-3">
+    <h5 class="d-inline p-2">Hello {{user.username}} ! </h5>
+    <a routerLink="" (click)="Logout();">Logout</a>
+</div>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card chat-app">
+                <div id="plist" class="people-list">
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-search" ></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="searchKey">
+                    </div>
+
+                    <h6 class="m-b-0">Members</h6>
+                    <ul class="list-unstyled chat-list mt-2 mb-0" *ngFor="let u of users" (click)="goToChatRoom(u)">
+                        <li class="clearfix">
+                            <img src="https://png.pngtree.com/png-vector/20220608/ourmid/pngtree-man-avatar-isolated-on-white-background-png-image_4891418.png"
+                                alt="avatar">
+                            <div class="about">
+                                <div class="name">{{u.username}}</div>
+                                <div class="status"> <i
+                                        [ngClass]="u.isActive ? 'fa fa-circle online' : 'fa fa-circle offline'"></i>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <app-chat-room *ngIf="user2.username !== ''" style="margin-left: 25%" [user1]="user" [user2]="user2" #chatRoom></app-chat-room>
+
+            </div>
+        </div>
+    </div>
+</div>
